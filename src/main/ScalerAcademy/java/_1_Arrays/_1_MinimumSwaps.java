@@ -1,6 +1,29 @@
 package main.ScalerAcademy.java._1_Arrays;
 
 public class _1_MinimumSwaps {
+	
+	/*
+	 * Problem Description
+
+	Given an array of integers A and an integer B, 
+	find and return the minimum number of swaps required 
+	to bring all the numbers less than or equal to B together.
+
+	Note: It is possible to swap any two elements, not necessarily consecutive.
+
+	Problem Constraints
+
+	1 <= length of the array <= 100000
+	-109 <= A[i], B <= 109
+	
+	Input 1:
+
+ 	A = [1, 12, 10, 3, 14, 10, 5]
+ 	B = 8
+ 	
+ 	Output 1:
+ 	2	
+	 */
 	public static void main(String[] args) {
 		int[] A1 = new int[] {1, 12, 10, 3, 14, 10, 5};
 		int[] A2 = new int[] {5, 17, 100, 11};
@@ -9,7 +32,7 @@ public class _1_MinimumSwaps {
 		
 		_1_MinimumSwaps ms = new _1_MinimumSwaps();
 		
-		int minSwaps = ms.minSwaps(A1, B1);
+		int minSwaps = ms.minSwaps(A2, B2);
 		
 		System.out.println("Minimum swaps : " + minSwaps);
 		
