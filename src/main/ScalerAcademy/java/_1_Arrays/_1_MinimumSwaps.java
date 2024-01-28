@@ -2,7 +2,81 @@ package main.ScalerAcademy.java._1_Arrays;
 
 public class _1_MinimumSwaps {
 	public static void main(String[] args) {
-		System.out.println("Hello");
+		int[] A1 = new int[] {1, 12, 10, 3, 14, 10, 5};
+		int[] A2 = new int[] {5, 17, 100, 11};
+		int B1 = 8;
+		int B2 = 20;
+		
+		_1_MinimumSwaps ms = new _1_MinimumSwaps();
+		
+		int minSwaps = ms.minSwaps(A1, B1);
+		
+		System.out.println("Minimum swaps : " + minSwaps);
+		
+	}
+	
+	public int minSwaps(int[] A, int B) {
+		int n = A.length;
+		
+		int ans = 0; // returns final ans
+		
+		int countLess = 0; // stores number of elements less than B
+		
+		
+		// counting numner of elements less than B here
+		for(int i = 0; i < n; i++) {
+			if(A[i] <= B) {
+				countLess++;
+			}
+		}
+		
+		// if only 1, or no element less than B, no swapping needed
+		if(countLess <= 1) {
+			return 0;
+		}
+		
+		else {
+			
+			// l holds left index of window, r holds right index
+			// badNos holds number of elements in window which are undesirable(>B)
+			// badNos only tells how many elements are to be swapped in a window of size=countLess
+			int l, r, badNos;
+			l = r = badNos = 0;
+			
+			// counting badNos for first window
+			while(r < countLess) {
+				if(A[r] > B) {
+					badNos++;
+				}
+				
+				r++;
+			}
+			
+			// updating ans with badNos found in 1st window
+			ans = badNos;
+			
+			// counting badNos for rest of windows of size=countLess
+			while(r < n) {
+				// element coming in window from right is bad No.
+				if(A[r] > B) {
+					badNos++;
+				} // element removed from window on left was bad No.
+				if(A[l] > B) {
+					badNos--;
+				}
+				
+				// finding minimum value from badNos and ans
+				ans = Math.max(ans, badNos);
+				
+				// moving window to right
+				l++;
+				r++;
+			}
+		}
+		
+		
+		return ans;
+		
 	}
 
 }
