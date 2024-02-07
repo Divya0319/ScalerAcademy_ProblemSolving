@@ -1,13 +1,13 @@
 package main.ScalerAcademy.java._1_Arrays;
 
-public class _4_MaxSubArraySum_BruteForce {
+public class _4_3_MaxSubArraySum_CarryForward {
 	
 	/*
 	 * Given arr[N], find maximum subarray sum of all the subarrays
 	 */
 	
 	public static void main(String[] args) {
-		_4_MaxSubArraySum_BruteForce mss = new _4_MaxSubArraySum_BruteForce();
+		_4_3_MaxSubArraySum_CarryForward mss = new _4_3_MaxSubArraySum_CarryForward();
 		int[] A = new int[] {-3, 4, -2, 5, 3, -2, 8, 2, -1, 4};
 		int maxSum = mss.maxSubArraySum(A);
 		
@@ -16,23 +16,22 @@ public class _4_MaxSubArraySum_BruteForce {
 	}
 	
 	public int maxSubArraySum(int[] A) {
-		int ans = Integer.MIN_VALUE;
+		
 		int n = A.length;
+		int ans = Integer.MIN_VALUE;
 		
 		for(int i = 0; i < n; i++) {
+			
+			int sum = 0;
 			for(int j = i; j < n; j++) {
-				int sum = 0;
-				for(int k = i; k <= j; k++) {
-					sum += A[k];
-					
-					ans = Math.max(ans, sum);
-				}
+				sum += A[j];
+				
+				ans = Math.max(ans, sum);
 			}
 		}
 		
-		
 		return ans;
+		
 	}
-	
 
 }
